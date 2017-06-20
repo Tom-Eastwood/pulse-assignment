@@ -49,7 +49,7 @@
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    {{ Auth::user()->email }} <span class="caret"></span>
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
@@ -71,8 +71,18 @@
                 </div>
             </div>
         </nav>
-
-        @yield('content')
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                @if(session('status') )
+                    <div class="alert alert-success">
+                        {{ session('status') }}
+                    </div>
+                @endif
+                    @yield('content')
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Scripts -->
