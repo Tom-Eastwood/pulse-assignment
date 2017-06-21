@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', 'HomeController@index');
 
 Auth::routes();
 
@@ -22,8 +20,6 @@ Route::get('/auth/success', [
     'as'   => 'auth.success',
     'uses' => 'Auth\RegisterController@success'
 ]);
-
-Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('surgeons', 'SurgeonController');
 

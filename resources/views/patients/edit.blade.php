@@ -52,19 +52,24 @@
     <div class="form-group @if($errors->has('phone1') || $errors->has('phone2') || $errors->has('phone3')) has-error @endif">
         <label for="phone" class="col-md-4 control-label">Phone</label>
 
-        <div class="col-md-6">
+        <div class="col-md-2">
             <input id="phone1" type="text" class="form-control" name="phone1" value="{{ $patient->phone1 }}" required>
-            <input id="phone2" type="text" class="form-control" name="phone2" value="{{ $patient->phone2 }}" required>
-            <input id="phone3" type="text" class="form-control" name="phone3" value="{{ $patient->phone3 }}" required>
-
-            @if ($errors->has('phone1') || $errors->has('phone2') || $errors->has('phone3') )
-                <span class="help-block">
-                    <strong>{{ $errors->first('phone1') }}</strong><br>
-                    <strong>{{ $errors->first('phone2') }}</strong><br>
-                    <strong>{{ $errors->first('phone3') }}</strong><br>
-                </span>
-            @endif
         </div>
+        <div class="col-md-2">
+            <input id="phone2" type="text" class="form-control" name="phone2" value="{{ $patient->phone2 }}" required>
+        </div>
+        <div class="col-md-2">
+            <input id="phone3" type="text" class="form-control" name="phone3" value="{{ $patient->phone3 }}" required>
+        </div>
+        @if ($errors->has('phone1') || $errors->has('phone2') || $errors->has('phone3') )
+        <div class="col-md-6 col-md-offset-4">
+            <span class="help-block">
+                <strong>{{ $errors->first('phone1') }}</strong><br>
+                <strong>{{ $errors->first('phone2') }}</strong><br>
+                <strong>{{ $errors->first('phone3') }}</strong><br>
+            </span>
+        </div>
+        @endif
     </div>
 
     <div class="form-group{{ $errors->has('gender') ? ' has-error' : '' }}">
@@ -118,7 +123,7 @@
 
             @if ($errors->has('surgeon_id'))
                 <span class="help-block">
-                    <strong>The Surgeon field is required</strong>
+                    <strong>The surgeon field is required</strong>
                 </span>
             @endif
         </div>

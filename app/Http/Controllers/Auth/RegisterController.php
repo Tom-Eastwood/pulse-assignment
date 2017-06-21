@@ -75,7 +75,7 @@ class RegisterController extends Controller
     //redirect on successful registration of user - needed so user is not logged into new user upon registration
     public function success()
     {
-        return redirect()->route('home')->with('status', 'You have successfully added a new user.');
+        return redirect('/')->with('status', 'You have successfully added a new user.');
     }
 
     //IMPORTANT: overriding laravel auth method so that user is not automatically logged in upon registration
