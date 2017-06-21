@@ -19,7 +19,7 @@
             <td>{{$surgeon->last_name}}</td>
             <td>{{$surgeon->email}}</td>
             <td>
-                @foreach($surgeon->patients() as $patient)
+                @foreach($surgeon->patients as $patient)
                     {{$patient->last_name}}, {{$patient->first_name}}
                     <br>
                 @endforeach

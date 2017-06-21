@@ -18,7 +18,9 @@ class CreatePatientsTable extends Migration
             $table->string('first_name');
             $table->string('last_name');
             $table->string('email')->unique();
-            $table->integer('phone');
+            $table->smallInteger('phone1');
+            $table->smallInteger('phone2');
+            $table->smallInteger('phone3');
             $table->string('gender', 6);
             $table->smallInteger('age');
             $table->string('surgeon_id')->references('id')->on('surgeons');
