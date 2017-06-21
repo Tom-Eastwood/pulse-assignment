@@ -17,6 +17,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
+//custom routing for auth so that users are not logged in upon registration
+Route::get('/auth/success', [
+    'as'   => 'auth.success',
+    'uses' => 'Auth\RegisterController@success'
+]);
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('surgeons', 'SurgeonController');

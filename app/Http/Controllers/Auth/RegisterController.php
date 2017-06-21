@@ -6,6 +6,7 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -27,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    //protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -36,7 +37,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('auth');
     }
 
     /**
@@ -69,5 +70,33 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+    //redirect on successful registration of user - needed so user is not logged into new user upon registration
+    public function success()
+    {
+        return redirect()->route('home')->with('status', 'You have successfully added a new user.');
+    }
+
+    //IMPORTANT: overriding laravel auth method so that user is not automatically logged in upon registration
+    /**
+    * Handle a registration request for the application.
+    *
+    * @param  \Illuminate\Http\Request $request
+    * @return \Illuminate\Http\Response
+    */
+    public function register(Request $request)
+    {
+        $validator = $this->validator($request->all());
+    
+        if ($validator->fails()) {
+            $this->throwValidationException(
+                $request, $validator
+            );
+        }
+    
+        $this->create($request->all());
+    
+        return redirect(route('auth.success'));
     }
 }
