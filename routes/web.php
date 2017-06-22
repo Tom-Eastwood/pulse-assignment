@@ -21,6 +21,10 @@ Route::get('/auth/success', [
     'uses' => 'Auth\RegisterController@success'
 ]);
 
+Route::resource('users', 'UserController', ['only' => [
+    'index', 'show', 'edit', 'update', 'destroy'
+]]);
+
 Route::resource('surgeons', 'SurgeonController');
 
 Route::resource('patients', 'PatientController');

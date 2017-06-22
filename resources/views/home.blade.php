@@ -6,7 +6,7 @@
 
 <div class="panel-body">    
     <div class="col-md-4">
-        <a href="{{route('register')}}">Add User</a>
+        <a href="{{route('users.index')}}">View Users</a>
     </div>
     <div class="col-md-4">
         <a href="{{route('patients.index')}}">View Patients</a>
