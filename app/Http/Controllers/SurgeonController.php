@@ -27,7 +27,13 @@ class SurgeonController extends Controller
     {
         $surgeons = Surgeon::all();
 
-        return view('surgeons.index', ['surgeons' => $surgeons]);
+        return view('surgeons.index', 
+            ['surgeons' => $surgeons,
+            'breadcrumbs' => 
+                ['Home' => url('/'), 
+                'Surgeons' => route('surgeons.index') ]
+            ]
+        );
     }
 
     /**
@@ -37,7 +43,13 @@ class SurgeonController extends Controller
      */
     public function create()
     {
-        return view('surgeons.create');
+        return view('surgeons.create',
+            ['breadcrumbs' => 
+                ['Home' => url('/'), 
+                'Surgeons' => route('surgeons.index'),
+                'Add Surgeon' => route('surgeons.create') ]
+            ]
+        );
     }
 
     /**
@@ -75,7 +87,14 @@ class SurgeonController extends Controller
      */
     public function show($id)
     {
-        return view('surgeons.show', ['surgeon' => Surgeon::findOrFail($id)]);
+        return view('surgeons.show', 
+            ['surgeon' => Surgeon::findOrFail($id),
+            'breadcrumbs' => 
+                ['Home' => url('/'), 
+                'Surgeons' => route('surgeons.index'),
+                'View Surgeon' => route('surgeons.show', $id) ]
+            ]
+        );
     }
 
     /**
@@ -86,7 +105,15 @@ class SurgeonController extends Controller
      */
     public function edit($id)
     {
-        return view('surgeons.edit', ['surgeon' => Surgeon::findOrFail($id)]);
+        return view('surgeons.edit', 
+            ['surgeon' => Surgeon::findOrFail($id),
+            'breadcrumbs' => 
+                ['Home' => url('/'), 
+                'Surgeons' => route('surgeons.index'),
+                'View Surgeon' => route('surgeons.show', $id),
+                'Edit Surgeon' => route('surgeons.edit', $id) ]
+            ]
+        );
     }
 
     /**

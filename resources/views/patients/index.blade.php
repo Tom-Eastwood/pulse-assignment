@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<h2>Patient <a href="{{ route('patients.create') }}" class="btn btn-success pull-right">Add Patient</a></h2>
+<h2>Patients <a href="{{ route('patients.create') }}" class="btn btn-success pull-right">Add Patient</a></h2>
 
 <table class="table table-striped">
     <thead> 

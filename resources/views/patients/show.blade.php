@@ -2,7 +2,7 @@
 
 @section('content')
 <h2>{{$patient->last_name}}, {{$patient->first_name}}</h2>
-<p><a href="{{ route('patients.edit', $patient->id) }}" class="btn btn-info">Update</a></p>
+
 
 <table class="table table-striped">
     <thead> 
@@ -29,7 +29,9 @@
     </tbody> 
 </table>
 
-<form class="form-horizontal" role="form" method="POST" action="{{ route('patients.destroy', $patient->id) }}">
+<a href="{{ route('patients.edit', $patient->id) }}" class="btn btn-info">Update</a>
+
+<form class="form-horizontal pull-right" role="form" method="POST" action="{{ route('patients.destroy', $patient->id) }}">
     {{ csrf_field() }}
     {{ method_field('DELETE') }}
     <button type="submit" class="btn btn-danger" onclick="return confirm('Are you want to delete this patient?')">

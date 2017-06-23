@@ -2,7 +2,6 @@
 
 @section('content')
 <h2>{{$user->last_name}}, {{$user->first_name}}</h2>
-<p><a href="{{ route('users.edit', $user->id) }}" class="btn btn-info">Update</a></p>
 
 <table class="table table-striped">
     <thead> 
@@ -21,7 +20,9 @@
     </tbody> 
 </table>
 
-<form class="form-horizontal" role="form" method="POST" action="{{ route('users.destroy', $user->id) }}">
+<a href="{{ route('users.edit', $user->id) }}" class="btn btn-info">Update</a>
+
+<form class="form-horizontal pull-right" role="form" method="POST" action="{{ route('users.destroy', $user->id) }}">
     {{ csrf_field() }}
     {{ method_field('DELETE') }}
     <button type="submit" class="btn btn-danger" onclick="return confirm('Are you want to delete this user?')">

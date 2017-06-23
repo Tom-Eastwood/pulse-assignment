@@ -1,0 +1,213 @@
+//imports
+@import 'font-awesome-4.7.0/scss/font-awesome';
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+//color vars
+$dark   : #465775;
+$light  : #FFF;
+
+//btn colors
+$success: #36AF85;
+$info: #07A1B2;
+$danger: #EC0B43;
+
+//transition vars
+@mixin transition($duration) {
+    -webkit-transition: $duration;
+    -moz-transition: $duration;
+    -ms-transition: $duration;
+    -o-transition: $duration;
+    transition: $duration;
+}
+
+html {
+    box-sizing: border-box;
+    font-size: 20px;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body{
+    font-family: 'Raleway', sans-serif;
+    a, .btn{
+        @include transition(0.2s ease-in-out);
+        &:hover{
+            @include transition(0.2s ease-in-out);
+            text-decoration: none;
+        }
+    }
+}
+
+//button overrides
+.btn{
+    border: none;
+    font-size: 1rem;
+}
+
+.btn-primary{
+    background-color: $dark;
+    &:hover{
+        background-color: darken($dark, 10%);
+    }
+}
+
+.btn-success{
+    background-color: $success;
+    &:hover{
+        background-color: darken($success, 10%);
+    }
+}
+
+.btn-info{
+    background-color: $info;
+    &:hover{
+        background-color: darken($info, 10%);
+    }
+}
+
+.btn-danger{
+    background-color: $danger;
+    &:hover{
+        background-color: darken($danger, 10%);
+    }
+}
+
+//table style
+.table, .form-control, label{
+    font-size: 0.8rem;
+    letter-spacing: 0.8px;
+}
+
+//breadcrumb style
+.breadcrumb{
+    background-color: $light;
+    padding-left: 0;
+    margin-left: -15px;
+}
+
+//form style
+.form-control:focus{
+    border-color: $dark;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(70, 87, 117, 1);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(70, 87, 117, 1);
+}
+
+//panel style
+.panel{
+    clear: both;
+}
+.panel-default > .panel-heading{
+    background-color: darken($light, 10%);
+}
+//nav styling
+.navbar-default {
+    background-color: $dark;
+    border-color: $dark;
+
+    .container{
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+    .navbar-brand {
+        color: $light;
+        font-size: 1rem;
+        &:hover, &:focus {
+            color: darken($light, 10%); 
+        }
+    }
+    .navbar-text {
+        color: $light; 
+    }
+    .navbar-nav {
+        > li {
+            > a {
+                color: $light;
+                &:hover,  &:focus {
+                    color: darken($light, 10%); 
+                }
+            }
+        }
+        > .active {
+            > a, > a:hover, > a:focus {
+                color: darken($light, 10%); 
+                background-color: $dark; 
+            }
+        }
+        > .open {
+            > a, > a:hover, > a:focus {
+                color: darken($light, 10%); 
+                background-color: $dark; 
+            }
+        }
+    }
+    .navbar-toggle {
+        border-color: $dark;
+        &:hover, &:focus {
+            background-color: $dark; }
+        .icon-bar {
+            background-color: $light; 
+        }
+    }
+    .navbar-collapse, .navbar-form {
+        border-color: $light; 
+    }
+    .navbar-link {
+        color: $light;
+        &:hover {
+            color: darken($light, 10%); 
+        }
+    }
+    .dropdown-menu>li>a:focus, .dropdown-menu {
+        >li>a:hover{
+            background-color: darken($light, 10%); 
+        }
+    }
+}
+
+//home page
+.home{
+    .well{
+        padding: 0;
+        text-align: center;
+        background-color: $light;
+        i{
+            margin-bottom: 1rem;
+        }
+        a{
+            color: $dark;
+            font-size: 1rem;
+            display: inline-block;
+            height: 100%;
+            width: 100%;
+            padding: 1rem;
+            border-radius: 4px;
+
+            &:hover{
+                color: $light;
+                background-color: $dark;
+            }
+        }
+    }
+}
+
+
+//mobile
+
+//nav
+@media (max-width: 767px) {
+    .navbar-default .navbar-nav .open .dropdown-menu {
+        > li > a {
+            color: $light;
+            &:hover, &:focus {
+                color: darken($light, 10%); 
+            }
+        }
+        > .active {
+            > a, > a:hover, > a:focus, {
+                color: darken($light, 10%); 
+                background-color: $dark; 
+            }
+        }
+    }
+}

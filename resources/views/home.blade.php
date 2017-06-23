@@ -1,18 +1,22 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="panel panel-default">
-    <div class="panel-heading">Welcome</div>
 
-<div class="panel-body">    
+<div class="row home">    
     <div class="col-md-4">
-        <a href="{{route('users.index')}}">View Users</a>
+        <div class="well">
+            <a href="{{route('users.index')}}"> <i class="fa fa-user fa-4x" aria-hidden="true"></i><br> Users</a>
+        </div>
     </div>
     <div class="col-md-4">
-        <a href="{{route('patients.index')}}">View Patients</a>
+        <div class="well">
+            <a href="{{route('patients.index')}}"><i class="fa fa-clipboard fa-4x" aria-hidden="true"></i><br> Patients</a>
+        </div>
     </div>
     <div class="col-md-4">
-        <a href="{{route('surgeons.index')}}">View Surgeons</a>
+        <div class="well">
+            <a href="{{route('surgeons.index')}}"><i class="fa fa-user-md fa-4x" aria-hidden="true"></i><br> Surgeons</a>
+        </div>
     </div> 
 </div>
 @endsection

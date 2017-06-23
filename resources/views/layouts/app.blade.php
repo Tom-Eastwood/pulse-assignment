@@ -13,6 +13,7 @@
     <!-- Styles -->
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{url('/')}}/css/main.min.css">
 </head>
 <body>
     <div id="app">
@@ -73,11 +74,24 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                @if(session('status') )
-                    <div class="alert alert-success">
-                        {{ session('status') }}
-                    </div>
-                @endif
+                    @if(session('status') )
+                        <div class="alert alert-success">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+                    
+                    @isset($breadcrumbs)
+                        <ol class="breadcrumb">
+                        @foreach($breadcrumbs as $name => $url)
+                            @if($loop->last)
+                                <li class="active">{{ $name }}</li>
+                            @else
+                                <li><a href="{{ $url }}">{{ $name }}</a></li>
+                            @endif
+                        @endforeach
+                        </div>
+                    @endif
+
                     @yield('content')
                 </div>
             </div>

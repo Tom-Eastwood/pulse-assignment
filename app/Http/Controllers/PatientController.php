@@ -27,8 +27,14 @@ class PatientController extends Controller
     public function index()
     {
         $patients = Patient::all();
-
-        return view('patients.index', ['patients' => $patients]);
+        
+        return view('patients.index', 
+            ['patients' => $patients, 
+            'breadcrumbs' => 
+                ['Home' => url('/'), 
+                'Patients' => route('patients.index') ]
+            ]
+        );
     }
 
     /**
@@ -40,7 +46,14 @@ class PatientController extends Controller
     {
         $surgeons = Surgeon::all();
 
-        return view('patients.create', ['surgeons' => $surgeons]);
+        return view('patients.create', 
+            ['surgeons' => $surgeons,
+            'breadcrumbs' => 
+                ['Home' => url('/'), 
+                'Patients' => route('patients.index'),
+                'Add Patient' => route('patients.create') ]
+            ]
+        );
     }
 
     /**
@@ -90,7 +103,14 @@ class PatientController extends Controller
      */
     public function show($id)
     {
-        return view('patients.show', ['patient' => Patient::findOrFail($id)]);
+        return view('patients.show', 
+            ['patient' => Patient::findOrFail($id),
+            'breadcrumbs' => 
+                ['Home' => url('/'), 
+                'Patients' => route('patients.index'),
+                'View Patient' => route('patients.show', $id) ]
+            ]
+        );
     }
 
     /**
@@ -101,7 +121,16 @@ class PatientController extends Controller
      */
     public function edit($id)
     {
-        return view('patients.edit', ['patient' => Patient::findOrFail($id), 'surgeons' => Surgeon::all()]);
+        return view('patients.edit', 
+            ['patient' => Patient::findOrFail($id), 
+            'surgeons' => Surgeon::all(),
+            'breadcrumbs' => 
+                ['Home' => url('/'), 
+                'Patients' => route('patients.index'),
+                'View Patient' => route('patients.show', $id),
+                'Edit Patient' => route('patients.edit', $id) ]
+            ]
+        );
     }
 
     /**
